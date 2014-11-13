@@ -21,14 +21,17 @@ class JsonSchema extends Json
             return $this;
         }
 
-        $resolver->resolve($this->encode(false), $this->uri);
+        $resolver->resolve($this->content, $this->uri);
 
         return $this;
     }
 
     public function validate(Json $json, Validator $validator)
     {
-        $validator->check($json, $this);
+        $validator->check(
+            $json->getContent(),
+            $this->getContent()
+        );
 
         if (!$validator->isValid()) {
             $msg = "JSON does not validate. Violations:".PHP_EOL;
