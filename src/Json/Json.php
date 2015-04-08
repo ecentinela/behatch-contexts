@@ -6,16 +6,11 @@ use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 class Json
 {
-    private $content;
+    protected $content;
 
     public function __construct($content)
     {
         $this->content = $this->decode((string) $content);
-    }
-
-    public function getContent()
-    {
-        return $this->content;
     }
 
     public function read($expression, PropertyAccessor $accessor)

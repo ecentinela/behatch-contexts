@@ -60,7 +60,7 @@ class JsonSchema extends atoum
             )
                 ->mock($validator)
                     ->call('check')
-                    ->withArguments($json, $schema)
+                    ->withArguments($json->content, $schema->content)
                     ->once()
 
                 ->boolean($result)
